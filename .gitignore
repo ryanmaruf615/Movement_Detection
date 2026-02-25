@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.npy
+*.joblib
+data/
+.venv/
+Movement_Detection/
