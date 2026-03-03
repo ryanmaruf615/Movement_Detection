@@ -158,13 +158,10 @@ def load_sample_data():
 
 
 def load_final_data():
-    """Load the final organized data from folders.
-    Now also saves file_boundaries.npy for temporal feature extraction.
-    """
+    """Load the final organized data from folders."""
     print("Loading final data...")
     all_signals = []
     all_labels = []
-    file_boundaries = [0]  # track where each file starts/ends
 
     for class_name, folder in config.FINAL_DATA.items():
         label = config.LABEL_MAP[class_name]
@@ -183,16 +180,10 @@ def load_final_data():
             labels = np.full(signals.shape[0], label, dtype=np.int32)
             all_signals.append(signals)
             all_labels.append(labels)
-            file_boundaries.append(file_boundaries[-1] + signals.shape[0])
             print(f"    {os.path.basename(fpath)}: {signals.shape[0]} scans")
 
     all_signals = np.vstack(all_signals)
     all_labels = np.concatenate(all_labels)
-
-    # Save file boundaries so feature extraction knows where files start/end
-    np.save(os.path.join(config.PROCESSED_DIR, "file_boundaries.npy"),
-            np.array(file_boundaries, dtype=np.int64))
-    print(f"  File boundaries saved ({len(file_boundaries) - 1} files)")
 
     return all_signals, all_labels
 

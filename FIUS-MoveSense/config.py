@@ -12,7 +12,7 @@ import os
 # ============================================================
 # "sample"  -> uses the 3 sample files (signal_500/600)
 # "final"   -> uses files in data/raw/no_movement/ and data/raw/movement/
-DATA_MODE = "sample"
+DATA_MODE = "final"
 
 # ============================================================
 # PROJECT PATHS

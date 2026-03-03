@@ -1,8 +1,9 @@
 """
 FIUS-MoveSense: Feature Extraction Module V3 (Temporal)
 ========================================================
-Adds TEMPORAL features comparing consecutive scans.
+Key fix: Added TEMPORAL features comparing consecutive scans.
 Movement causes scan-to-scan changes; standing still doesn't.
+Keeps original zone + time + frequency features too.
 """
 
 import os
@@ -68,14 +69,19 @@ def extract_frequency_features(signal):
     arith_mean = np.mean(spectrum) + 1e-10
     flatness = np.exp(log_mean) / arith_mean
     return {
-        "dominant_freq": dominant_freq, "mean_freq": mean_freq,
-        "band_energy_0_50Hz": band_energy, "spectral_entropy": spec_entropy,
-        "frequency_centroid": centroid, "spectral_flatness": flatness,
+        "dominant_freq": dominant_freq,
+        "mean_freq": mean_freq,
+        "band_energy_0_50Hz": band_energy,
+        "spectral_entropy": spec_entropy,
+        "frequency_centroid": centroid,
+        "spectral_flatness": flatness,
     }
 
 
 def extract_temporal_features(current_signal, prev_signal, next_signal):
-    """Compare this scan to neighbors. Movement = large diffs."""
+    """Compare this scan to its neighbors.
+    Movement = large differences. Standing still = nearly identical scans.
+    """
     features = {}
     neighbors = []
     if prev_signal is not None:
@@ -142,6 +148,9 @@ def extract_all_features(signal, first_peak_idx, prev_signal=None, next_signal=N
 
 
 def build_feature_matrix(filtered_signals, first_peaks, labels):
+    """Build feature matrix with temporal context.
+    Uses file_boundaries to avoid comparing scans across files.
+    """
     print("Feature Extraction...")
     print(f"  Processing {filtered_signals.shape[0]} signals...")
 

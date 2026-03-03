@@ -26,13 +26,4 @@ band_energy_0_50Hz
 spectral_entropy
 frequency_centroid
 spectral_flatness
-temporal_mean_abs_diff
-temporal_max_abs_diff
-temporal_correlation
-temporal_energy_diff
-temporal_std_diff
-temporal_zone_close_diff
-temporal_zone_mid_diff
-temporal_zone_far_diff
-temporal_zone_bg_diff
 first_peak_idx

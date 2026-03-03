@@ -55,6 +55,19 @@ def main():
     models = train_all_models(df)
 
     # Step 5: Evaluation
+
+    # Auto-generate feature_order.txt for predict.py
+    import pandas as pd
+    features_csv = os.path.join(config.FEATURES_DIR, "features.csv")
+    if os.path.exists(features_csv):
+        df_feat = pd.read_csv(features_csv)
+        feature_cols = [c for c in df_feat.columns if c != "label"]
+        order_path = os.path.join(config.MODELS_DIR, "feature_order.txt")
+        with open(order_path, 'w') as f_order:
+            for col in feature_cols:
+                f_order.write(col + "\n")
+        print(f"  Feature order saved: {len(feature_cols)} features -> {order_path}")
+
     print("\n[STEP 5/5] Evaluation...")
     results = evaluate_all_models()
 
