@@ -17,6 +17,19 @@ import config
 from src.signal_processing import apply_bessel_filter, compute_envelope, detect_first_peak
 from src.feature_extraction import extract_all_features
 
+def open_csv_safe(filepath):
+    """Open CSV file with auto-detected encoding."""
+    encodings = ['utf-8-sig', 'utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+    for enc in encodings:
+        try:
+            with open(filepath, 'r', encoding=enc) as f:
+                f.readline()  # test read
+            return enc
+        except (UnicodeDecodeError, UnicodeError):
+            continue
+    return 'latin-1'  # fallback - handles any byte
+
+
 
 def load_feature_order():
     """Load the correct feature order used during training."""
@@ -27,7 +40,8 @@ def load_feature_order():
 
 def load_new_csv(filepath):
     """Load a CSV file - auto-detects clean or split format."""
-    with open(filepath, 'r', encoding='utf-8-sig') as f:
+    enc = open_csv_safe(filepath)
+    with open(filepath, 'r', encoding=enc) as f:
         first_line = f.readline().strip()
 
     col_count = first_line.count(',') + 1
@@ -43,7 +57,8 @@ def load_new_csv(filepath):
 def _parse_clean(filepath):
     """Parse clean CSV where each row is one complete scan."""
     signals = []
-    with open(filepath, 'r', encoding='utf-8-sig') as f:
+    enc = open_csv_safe(filepath)
+    with open(filepath, 'r', encoding=enc) as f:
         for line in f:
             line = line.strip()
             if not line:
@@ -67,7 +82,8 @@ def _parse_clean(filepath):
 def _parse_split(filepath):
     """Parse CSV with lines split at 32KB boundaries."""
     full_text = ""
-    with open(filepath, 'r', encoding='utf-8-sig') as f:
+    enc = open_csv_safe(filepath)
+    with open(filepath, 'r', encoding=enc) as f:
         for line in f:
             full_text += line.rstrip('\n').rstrip('\r')
 
