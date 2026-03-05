@@ -428,4 +428,8 @@ The 50,000-sample signal is divided into distance regions:
 **[Your Name]**
 Frankfurt University of Applied Sciences
 Module: MOV-1 Sensor-Based Movement Detection
+<<<<<<< HEAD
 March 2026
+=======
+March 2026
+>>>>>>> 6071088d9533e20d2ea0175079ec65d3a89347b3
