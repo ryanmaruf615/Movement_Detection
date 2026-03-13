@@ -1,4 +1,5 @@
-# FIUS-MoveSense
+# MOV-1 Sensor-Based Movement Detection (FIUS-MoveSense )
+Frankfurt University of Applied Sciences
 
 **Ultrasonic Movement Detection Using Machine Learning**
 
@@ -425,27 +426,25 @@ The 50,000-sample signal is divided into distance regions:
 
 ## Author
 
-Name: Md Maruf hossain
-Matriculation No: 1390272
-Email: maruf.hossain@stud.fra-uas.de
+- Name: Md Maruf hossain
+- Matriculation No: 1390272
+- Email: maruf.hossain@stud.fra-uas.de
+---
+- Name: Md Jamal Uddin
+- Matriculation No: 1387201
+- Email: md.uddin2@stud.fra-uas.de
+---
+- Name: Mousumi Parvin Tonny
+- Matriculation No: 1393224
+- Email: mousumi.tonny@stud.fra-uas.de
+---
+- Name: Md. Shamsir Doha
+- Matriculation No: 1344011
+- Email: mohammad.doha@stud.fra-uas.de 
 
-Name: Md Jamal Uddin
-Matriculation No: 1387201
-Email: md.uddin2@stud.fra-uas.de
 
-Name: Mousumi Parvin Tonny
-Matriculation No: 1393224
-Email: mousumi.tonny@stud.fra-uas.de
-
-Name: Md. Shamsir Doha
-Matriculation No: 1344011
-Email: mohammad.doha@stud.fra-uas.de 
-
-Frankfurt University of Applied Sciences
-Module: MOV-1 Sensor-Based Movement Detection
 
 
 March 2026
 =======
-March 2026
->>>>>>> 6071088d9533e20d2ea0175079ec65d3a89347b3
+
