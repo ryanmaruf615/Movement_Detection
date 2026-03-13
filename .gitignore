@@ -1,7 +1,6 @@
 venv/
 __pycache__/
 *.npy
-*.joblib
 *.rar
 *.zip
 *.npy
