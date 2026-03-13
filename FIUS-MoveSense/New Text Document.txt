@@ -6,6 +6,5 @@ python main.py
 Step 3: Test each file
 powershellpython 
 
-predict.py data\raw\test\T1_empty_room.csv
-python predict.py data\raw\test\T2_person_still_100m.csv
-python predict.py data\raw\test\T3_person_still_184m.csv
+python predict.py data\raw\test\T2.csv
+python predict.py data\raw\test\T3.csv

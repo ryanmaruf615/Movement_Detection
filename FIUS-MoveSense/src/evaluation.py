@@ -212,11 +212,7 @@ def evaluate_all_models():
     # Generate signal example plots
     print("\nGenerating signal plots...")
     try:
-        try:
         plot_signal_examples(config.SIGNAL_PLOTS_DIR)
-    except (MemoryError, np._core._exceptions._ArrayMemoryError, Exception) as e:
-        print(f"  WARNING: Signal plots skipped (not enough memory: {e})")
-        print("  This does not affect model training or predictions.")
     except (MemoryError, np._core._exceptions._ArrayMemoryError, Exception) as e:
         print(f"  WARNING: Signal plots skipped (not enough memory: {e})")
         print("  This does not affect model training or predictions.")
